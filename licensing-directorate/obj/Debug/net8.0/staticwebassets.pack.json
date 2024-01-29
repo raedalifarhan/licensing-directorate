@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\files\\20240128093137maids backend spring boot test.pdf",
+      "PackagePath": "staticwebassets\\files\\20240128093137maids backend spring boot test.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240127073751ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\20240127073751ILTQq2.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240127073857ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\20240127073857ILTQq2.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240127074534ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\20240127074534ILTQq2.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240127074728ILTQq.png",
+      "PackagePath": "staticwebassets\\images\\20240127074728ILTQq.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240128093029ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\20240128093029ILTQq2.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240128093357ILTQq.png",
+      "PackagePath": "staticwebassets\\images\\20240128093357ILTQq.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240128093533ILTQq.png",
+      "PackagePath": "staticwebassets\\images\\20240128093533ILTQq.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\20240128095703ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\20240128095703ILTQq2.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\ILTQq.png",
+      "PackagePath": "staticwebassets\\images\\ILTQq.png"
+    },
+    {
+      "Id": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\wwwroot\\images\\ILTQq2.png",
+      "PackagePath": "staticwebassets\\images\\ILTQq2.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.licensing-directorate.props",
+      "PackagePath": "build\\licensing-directorate.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.licensing-directorate.props",
+      "PackagePath": "buildMultiTargeting\\licensing-directorate.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.licensing-directorate.props",
+      "PackagePath": "buildTransitive\\licensing-directorate.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.licensing-directorate.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
