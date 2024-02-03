@@ -33,8 +33,8 @@ const CompanyCard = ({ company }: Props) => {
                 </Link>
             </div>
             <div className='flex justify-between items-center gap-4 mt-4 text-sm border-b-2 rounded-sm p-2 text-slate-500 border-slate-200'>
-                <p className='font-semibold'><strong>Budget | </strong>{company.companyCapital}</p>
-                <p className='font-semibold'><strong>Address | </strong>{company.address}</p>
+                <p className='font-semibold'><strong>رأس المال | </strong>{company.companyCapital}</p>
+                <p className='font-semibold'><strong>العنوان | </strong>{company.address}</p>
             </div>
         </div>
     )

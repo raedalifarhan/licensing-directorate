@@ -36,10 +36,10 @@ const Filters = () => {
                 rounded-md bg-orange-800 hover:bg-slate-900 text-slate-300
                 py-2 px-4 text-base">
                     <FaAddressCard />
-                    <strong>Add New Company</strong>
+                    <strong>إضافة شركة</strong>
             </Link>
             <div>
-                <span className='uppercase text-sm text-gray-500 mr-2'>page size</span>
+                <span className='uppercase text-sm text-gray-500 mr-2'>عدد العناصر</span>
                 <Button.Group>
                     {PageSizeButtons.map((value, i) => (
                         <Button

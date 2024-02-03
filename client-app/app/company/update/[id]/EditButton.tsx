@@ -9,7 +9,7 @@ interface Props {
 const EditButton = ({id}: Props) => {
   return (
     <Button outline>
-        <Link href={`/company/update/${id}`}>Update Company</Link>
+        <Link href={`/company/update/${id}`}>تعديل بيانات الشركة</Link>
     </Button>
   )
 }

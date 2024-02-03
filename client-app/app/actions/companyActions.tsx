@@ -43,9 +43,16 @@ export async function updateCompany(data: FieldValues, id: string) {
 
 export async function UploadFile(formData: FormData) {
     try {
-        const res = await fetchWrapper.uploadFile(`companies/upload`, formData);
-        revalidatePath(`companies/upload`);
-        return res;
+        return await fetchWrapper.uploadFile(`companies/upload`, formData);
+    } catch (error) {
+        console.error('Error during saving data:', error);
+        throw new Error('Error during saving data.');
+    }
+}
+
+export async function downloadFileFromServer(url: string) {
+    try {
+        return await fetchWrapper.downloadFile(`companies/download/${url}`);
     } catch (error) {
         console.error('Error during saving data:', error);
         throw new Error('Error during saving data.');

@@ -78,8 +78,9 @@ namespace licensing_directorate.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CompanyType")
-                        .HasColumnType("int");
+                    b.Property<string>("CompanyType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ComplianceOfficer")
                         .HasColumnType("nvarchar(max)");
@@ -152,11 +153,13 @@ namespace licensing_directorate.Data.Migrations
                     b.Property<DateTime?>("LicenceRequestDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LicenceRequestStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("LicenceRequestStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LicenceStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("LicenceStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LicenseFileAttached")
                         .HasColumnType("nvarchar(max)");

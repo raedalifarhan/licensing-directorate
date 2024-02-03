@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj": {}
+    "D:\\Projects\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj": {
+    "D:\\Projects\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj",
+        "projectUniqueName": "D:\\Projects\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj",
         "projectName": "licensing-directorate",
-        "projectPath": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj",
+        "projectPath": "D:\\Projects\\licensing-directorate\\licensing-directorate\\licensing-directorate.csproj",
         "packagesPath": "C:\\Users\\Raed Farhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Raed Farhan\\Desktop\\licensing-directorate\\licensing-directorate\\obj\\",
+        "outputPath": "D:\\Projects\\licensing-directorate\\licensing-directorate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Raed Farhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {

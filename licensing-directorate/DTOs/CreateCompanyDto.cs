@@ -21,5 +21,6 @@ namespace licensing_directorate.DTOs
         public DateTime? DateOfPreliminaryApproval { get; set; }
         public string? ViolationsAndPenalties { get; set; }
         public string? ComplianceOfficer { get; set; }
+        public string CompanyType { get; set; }
     }
 }

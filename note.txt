@@ -6,9 +6,9 @@ git remote add origin https://github.com/raedalifarhan/licensing-directorate.git
 git push -u origin
 git branch -M main
 ==================================
-run backend command: dotnet watch --no-hot-reload
+run  back-end: dotnet watch --no-hot-reload
 ==================================
-run frontend command: npm run dev
+run front-end: npm run dev
 ==================================
 ABDULKADER DEVICE:
 {

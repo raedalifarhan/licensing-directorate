@@ -57,6 +57,16 @@ async function uploadFile(url: string, formData: FormData) {
     return await handleResponse(response);
 }
 
+async function downloadFile(url: string) {
+
+    const response = await fetch(baseUrl + url, { 
+        method: 'GET',
+        headers: await getHeaders()
+    })
+
+    return await handleResponse(response);
+}
+
 async function getHeaders() {
     const headers = {
         'content-type': 'application/json',
@@ -84,5 +94,6 @@ export const fetchWrapper = {
     post,
     put,
     del,
-    uploadFile
+    uploadFile,
+    downloadFile,
 }

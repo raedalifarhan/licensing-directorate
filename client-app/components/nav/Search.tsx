@@ -30,18 +30,18 @@ const Search = () => {
                 value={searchValue}
                 onChange={onChange}
                 type="text"
-                placeholder='Search for company by Code or Name'
+                placeholder='البحث عن طريق اسم او زمر الشركة'
                 className='
-                flex-grow
-                pl-5
-                bg-transparent
-                focus:outline-none
-                border-transparent
-                focus:border-transparent
-                focus:ring-0
-                text-base
-                text-gray-600
-            '
+                    flex-grow
+                    pl-5
+                    bg-transparent
+                    focus:outline-none
+                    border-transparent
+                    focus:border-transparent
+                    focus:ring-0
+                    text-base
+                  text-gray-600
+                '
             />
             <button onClick={search}>
                 <FaSearch

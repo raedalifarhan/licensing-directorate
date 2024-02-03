@@ -26,11 +26,11 @@ namespace licensing_directorate.Models
 
         // حالة طلب الترخيص
         [Required]
-        public LicenceRequestStatus LicenceRequestStatus { get; set; } = LicenceRequestStatus.inProgress;
+        public string LicenceRequestStatus { get; set; } = "قيد الانجاز";
 
         // حالة الرخصة 
         [Required]
-        public LicenceStatus LicenceStatus { get; set; } = LicenceStatus.Active;
+        public string LicenceStatus { get; set; } = "نشط";
 
         // تاريخ طلب التراخيص
         public DateTime? LicenceRequestDate { get; set; }

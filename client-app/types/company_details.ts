@@ -27,4 +27,5 @@ export type CompanyDetailedView = {
     licenceRequestDate: string | null;
     dateOfPreliminaryApproval: string | null;
     createDate: string;
+
 }

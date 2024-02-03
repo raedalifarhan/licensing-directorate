@@ -18,7 +18,7 @@ namespace licensing_directorate.Models
 
         // شركة/مكتب
         [Required]
-        public CompanyType CompanyType { get; set; }
+        public string CompanyType { get; set; }
 
         // أسماء الشركاء والمؤسسين
         public string? NamesOfPartners { get; set; }

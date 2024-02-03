@@ -6,6 +6,7 @@ using licensing_directorate.Models;
 using licensing_directorate.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace licensing_directorate.Controllers
 {
@@ -15,11 +16,15 @@ namespace licensing_directorate.Controllers
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private IWebHostEnvironment _environment;
+        private readonly IFileProvider _fileProvider;
 
-        public CompaniesController(DataContext context, IMapper mapper)
+        public CompaniesController(DataContext context, IMapper mapper, IWebHostEnvironment environment, IFileProvider fileProvider)
         {
             _context = context;
             _mapper = mapper;
+            _environment = environment;
+            _fileProvider = fileProvider;
         }
 
         [HttpGet]
@@ -35,7 +40,7 @@ namespace licensing_directorate.Controllers
                 query = query.Where(x => x.Code.Contains(param.searchTerm) || x.CompanyName.Contains(param.searchTerm));
             }
 
-            return Ok(await PagedList<CompanyDto>.CreateAsync(query, param!.PageNumber , param.PageSize));
+            return Ok(await PagedList<CompanyDto>.CreateAsync(query, param!.PageNumber, param.PageSize));
         }
 
         [HttpGet("{id}")]
@@ -55,7 +60,7 @@ namespace licensing_directorate.Controllers
         public async Task<ActionResult<string>> CreateCompany([FromBody] CreateCompanyDto createCompanyDto)
         {
 
-            var company = _mapper.Map<Company>(createCompanyDto); 
+            var company = _mapper.Map<Company>(createCompanyDto);
 
             _context.Companies.Add(company);
 
@@ -69,7 +74,7 @@ namespace licensing_directorate.Controllers
         [HttpPost("upload")]
         public async Task<ActionResult<string>> UploadFile(UploadFileDto model)
         {
-            
+
 
             if (model.File == null || model.File.Length == 0) return BadRequest("Invalid file");
 
@@ -97,7 +102,10 @@ namespace licensing_directorate.Controllers
                 var filePath = Path.Combine(folderPath, sourceFile);
 
                 // Ensure the directory exists before saving the file
-                Directory.CreateDirectory(folderPath);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
@@ -110,6 +118,14 @@ namespace licensing_directorate.Controllers
 
                 if (comp != null)
                 {
+                    // delete old file.
+                    if (!string.IsNullOrEmpty(comp.ImageUrl))
+                    {
+                        var oldFilePath = Path.Combine(folderPath, comp.ImageUrl);
+                        System.IO.File.Delete(oldFilePath);
+                    }
+
+                    // image or pdf file.
                     if (imageExtensions.Contains(fileExtension))
                     {
                         comp.ImageUrl = sourceFile;
@@ -123,13 +139,46 @@ namespace licensing_directorate.Controllers
                 }
 
                 return Ok(sourceFile);
-
             }
             catch (Exception ex)
             {
                 return BadRequest($"Failed to save file to the server: {ex.Message}");
             }
         }
+
+
+
+        [HttpGet("download/{fileName}")]
+        public async Task<IActionResult> DownloadFile(string fileName)
+        {
+            var filePath = Path.Combine(_environment.WebRootPath, "files", fileName);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+                return File(fileBytes, "application/octet-stream", fileName);
+            }
+
+            return NotFound("File Not Found");
+        }
+
+
+        //public byte[] DownloadExcelFile(string path)
+        //{
+        //    var uploadpath = _environment.WebRootPath;
+        //    var dest_path = Path.Combine(uploadpath, "uploads", "DB");
+
+        //    var full_path = Path.Combine(dest_path, path);
+
+        //    using (var workbook = new XLWorkbook(full_path))
+        //    {
+        //        using (var stream = new MemoryStream())
+        //        {
+        //            workbook.SaveAs(stream);
+        //            return stream.ToArray();
+        //        }
+        //    }
+        //}
 
         [HttpPut("{id}")]
         public async Task<ActionResult<string>> UpdateCompany(Guid id, [FromBody] UpdateCompanyDto updateCompanyDto)
@@ -143,7 +192,7 @@ namespace licensing_directorate.Controllers
             _mapper.Map<UpdateCompanyDto, Company>(updateCompanyDto, company);
 
             var result = await _context.SaveChangesAsync() > 0;
-            
+
             if (result) return Ok(company.Id);
 
             return BadRequest("Problem saving changes.");

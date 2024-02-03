@@ -28,6 +28,7 @@ function FileUpload({label, id}: Props, ) {
 
         try {
             const response = await UploadFile(formData);
+
             if (response.ok) {
                 console.log(`${label} uploaded successfully`);
             } else {
@@ -45,7 +46,7 @@ function FileUpload({label, id}: Props, ) {
               type="file"
               onChange={handleFileChange} />
 
-            <Button onClick={handleFileUpload} className='py-2 outline' >Submit</Button>
+            <Button onClick={handleFileUpload} className='py-2 outline' >حفظ</Button>
         </div>
     );
 }

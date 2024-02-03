@@ -9,6 +9,7 @@ import { createCompany, updateCompany } from '../actions/companyActions';
 import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { CompanyDetailedView } from '@/types/company_details';
+import SelectInput from '@/components/SelectInput';
 
 interface Props {
   company?: CompanyDetailedView
@@ -38,84 +39,87 @@ const CompanyForm = ({ company }: Props) => {
       if (pathname === '/company/create') {
         res = await createCompany(data);
         id = res;
+        toast.success(`company created successfuly`)
       } else {
         if (company) {
           res = await updateCompany(data, company.id)
           id = res;
+          toast.success(`company info updated successfuly`)
         }
       }
       if (res.error) {
+        toast.success(`${res.error.status} ${res.error.message}`)
         throw new Error(res.error);
       }
       router.push(`/company/details/${id}`)
     } catch (error: any) {
-      toast.error(error.status + ' ' + error.message)
+      toast.error(error.status + ' ' + error.message + ' or there is no changes.')
     }
   }
 
   return (
     <form className='flex flex-col gap-3' onSubmit={ handleSubmit(onSubmit) }>
       <div className='grid grid-cols-2 gap-4'>
-        <Input label='Company name' name='companyName'
+        <Input label='اسم الشركة' name='companyName'
           control={control}
           rules={{ required: 'Company name is required' }} />
 
-        <Input label='Company code' name='code'
+        <Input label='كود الشركة' name='code'
           control={control}
           rules={{ required: 'Company code is required' }} />
       </div>
 
       <div className='grid grid-cols-2 gap-4'>
-        <Input label='Old comerical name'
+        <Input label='اسم الشركة القديم'
           name='oldComericalName' control={control}
           rules={{ required: 'old comerical name is required' }} />
 
-        <Input label='Phone number'
+        <Input label='رقم الهاتف'
           name='phoneNumber' control={control}
           rules={{ required: 'Phone number is required' }} />
       </div>
 
       <div className='grid grid-cols-2 gap-4'>
-        <Input label='Address' name='address'
+        <Input label='العنوان' name='address'
           control={control}
           rules={{ required: 'Address is required' }} />
 
-        <Input label='Notes' name='notes' control={control}
+        <Input label='ملاحظات' name='notes' control={control}
           rules={{ required: 'Notes is required' }} />
       </div>
 
       <div className='grid grid-cols-2 gap-4'>
-        <Input label='Commercial Registration no.'
+        <Input label='رقم السجل التجاري'
           name='commercialRegistrationNo' control={control}
           rules={{ required: 'Commercial registration number. is required' }} />
 
-        <Input label='Licence no.' name='licenceNo'
+        <Input label='رقم الرخصة' name='licenceNo'
           control={control}
           rules={{ required: 'Licence no. is required' }} />
       </div>
 
 
-      <Input label='Violations and penalties'
+      <Input label='المخالفات و العقوبات'
         name='violationsAndPenalties'
         control={control}
         rules={{ required: 'Violations and penalties is required' }} />
 
-      <Input label='Compliance officer'
+      <Input label='الشكاوي'
         name='complianceOfficer'
         control={control}
         rules={{ required: 'Compliance officer is required' }} />
 
       <div className='grid grid-cols-4 gap-4'>
-        <Input label='Application Fee' name='applicationFee' control={control} type='number'
+        <Input label='رسوم الطلب' name='applicationFee' control={control} type='number'
           rules={{ required: 'Application Fee is required' }} />
 
-        <Input label='Company Capital' name='companyCapital' control={control} type='number'
+        <Input label='رأس المال' name='companyCapital' control={control} type='number'
           rules={{ required: 'Company Capital is required' }} />
 
-        <Input label='Licence Fee' name='licenceFee' control={control} type='number'
+        <Input label='رسوم الرخصة' name='licenceFee' control={control} type='number'
           rules={{ required: 'Licence Fee is required' }} />
 
-        <Input label='Financial Guarantee' name='financialGuarantee' control={control} type='number'
+        <Input label='الضمانة المالية' name='financialGuarantee' control={control} type='number'
           rules={{ required: 'Financial Guarantee is required' }} />
       </div>
 
@@ -123,7 +127,7 @@ const CompanyForm = ({ company }: Props) => {
         <>
           <div className='grid grid-cols-4 gap-4'>
             <DateInput
-              label='Date of application'
+              label='تاريخ تقديم الطلب'
               name='dateOfApplication'
               control={control}
               type='date'
@@ -132,7 +136,7 @@ const CompanyForm = ({ company }: Props) => {
               rules={{ required: 'Date of application is required' }} />
 
             <DateInput
-              label='Licence request date'
+              label='تاريخ طلب الرخصة'
               name='licenceRequestDate'
               control={control}
               type='date'
@@ -140,7 +144,7 @@ const CompanyForm = ({ company }: Props) => {
               showTimeSelect
               rules={{ required: 'Licence request date is required' }} />
 
-            <DateInput label='Create date'
+            <DateInput label='تاريخ الانشاء'
               name='createDate'
               control={control}
               type='date'
@@ -148,7 +152,7 @@ const CompanyForm = ({ company }: Props) => {
               showTimeSelect
               rules={{ required: 'Create date is required' }} />
 
-            <DateInput label='Date of preliminary approval'
+            <DateInput label='تاريخ الموافقة المبدأية'
               name='dateOfPreliminaryApproval'
               control={control}
               type='date'
@@ -157,13 +161,27 @@ const CompanyForm = ({ company }: Props) => {
               rules={{ required: 'Date of preliminary approval is required' }} />
           </div>
         </>}
+
+        <div className='grid grid-cols-2 gap-4'>
+        <SelectInput
+          label='نوع الشركة'
+          name='companyType'
+          control={control}
+          rules={{ required: 'Company type is required' }}
+          options={[
+            { label: 'مكتب', value: 'مكتب' },
+            { label: 'شركة', value: 'شركة' },
+          ]}
+        />
+      </div>
+
       <div className='flex justify-between gap-2 items-center'>
-        <Button outline color='gray' onClick={() => { router.push('/') }} >Cancel</Button>
+        <Button outline color='gray' onClick={() => { router.push('/') }} >الغاء</Button>
         <Button
           isProcessing={isSubmitting}
           disabled={!isValid}
           type='submit'
-          outline color='success' >Submit</Button>
+          outline color='success' >حفظ</Button>
       </div>
     </form>
   )

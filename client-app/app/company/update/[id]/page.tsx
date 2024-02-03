@@ -12,7 +12,7 @@ const Update = async ({params}: {params: {id: string}}) => {
   
   return (
     <div className='mx-auto max-w-[75%] rounded-lg shadow-lg p-10 bg-white'>
-      <Headings title='Update your company' subtitle='Please update the details of your company.' />
+      <Headings title='تعديل بيانات الشركة' subtitle='حدث بيانات الشركة حسب الحاجة' />
       <CompanyForm company={data} />
     </div>
   )
